@@ -16,13 +16,16 @@ build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
+# This section should be kept updated with chartpress' setup.py file:
+# https://github.com/jupyterhub/chartpress/blob/main/setup.py#L47-L52
+#
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.7
   run:
     - docker-py >=3.2.0, !=5.0.0
-    - python >=3.6
+    - python >=3.7
     - ruamel.yaml >=0.15.44
 
 test:
