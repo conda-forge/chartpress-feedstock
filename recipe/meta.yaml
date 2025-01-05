@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 6741eee884d8961cec03df772c382102a73852c2f44e481a20301e5e95fa5c5f
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - chartpress = chartpress:main
   noarch: python
@@ -22,13 +22,16 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
+    - setuptools
   run:
     - docker-py >=3.2.0, !=5.0.0
-    - python >=3.7
+    - python >={{ python_min }}
     - ruamel.yaml >=0.15.44
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - chartpress --help
 
