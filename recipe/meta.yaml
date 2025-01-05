@@ -23,6 +23,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - docker-py >=3.2.0, !=5.0.0
     - python >={{ python_min }}
