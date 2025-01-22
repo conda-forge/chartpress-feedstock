@@ -1,5 +1,5 @@
 {% set name = "chartpress" %}
-{% set version = "2.2.0" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6741eee884d8961cec03df772c382102a73852c2f44e481a20301e5e95fa5c5f
+  sha256: 32feaf572bdaa9ccf2855ba9eedb37710473134236764026a15f56be0f4f1c29
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - chartpress = chartpress:main
   noarch: python
