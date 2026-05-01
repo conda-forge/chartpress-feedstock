@@ -1,0 +1,51 @@
+schema_version: 1
+
+context:
+  version: "2.4.0"
+
+package:
+  name: chartpress
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/c/chartpress/chartpress-${{ version }}.tar.gz
+  sha256: 8dac83ee99b31495b8bffbe4b29def387aefae8e3343a1054187d0ce2cc42dd3
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - chartpress = chartpress:main
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+    - setuptools-scm
+  run:
+    - docker-py >=3.2.0, !=5.0.0
+    - python >=${{ python_min }}
+    - ruamel.yaml >=0.15.44
+
+tests:
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - chartpress --help
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: "ChartPress: render and publish helm charts and images"
+  homepage: https://github.com/jupyterhub/chartpress
+  repository: https://github.com/jupyterhub/chartpress
+  documentation: https://github.com/jupyterhub/chartpress
+
+extra:
+  recipe-maintainers:
+    - consideratio
+    - manics
